@@ -2830,6 +2830,8 @@ pub const NF_IP6_PRI_LAST: ::c_int = ::INT_MAX;
 // linux/netfilter_ipv6/ip6_tables.h
 pub const IP6T_SO_ORIGINAL_DST: ::c_int = 80;
 
+pub const SOCK_IOC_TYPE: ::c_ulong = 0x00000089;
+
 pub const SIOCADDRT: ::c_ulong = 0x0000890B;
 pub const SIOCDELRT: ::c_ulong = 0x0000890C;
 pub const SIOCGIFNAME: ::c_ulong = 0x00008910;
@@ -2886,6 +2888,8 @@ pub const SIOCGRARP: ::c_ulong = 0x00008961;
 pub const SIOCSRARP: ::c_ulong = 0x00008962;
 pub const SIOCGIFMAP: ::c_ulong = 0x00008970;
 pub const SIOCSIFMAP: ::c_ulong = 0x00008971;
+pub const SIOCGIFVLAN: ::c_long = 0x00008982;
+pub const SIOCSIFVLAN: ::c_long = 0x00008983;
 pub const SIOCSHWTSTAMP: ::c_ulong = 0x000089b0;
 pub const SIOCGHWTSTAMP: ::c_ulong = 0x000089b1;
 
