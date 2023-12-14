@@ -3803,6 +3803,11 @@ sock_extended_err
 sock_filter
 sock_fprog
 sock_txtime
+vlan_ioctl_cmds
+vlan_flags
+vlan_name_types
+__c_anonymous_vlan_ioctl_args_u
+vlan_ioctl_args
 sockaddr_alg
 sockaddr_can
 sockaddr_ll
