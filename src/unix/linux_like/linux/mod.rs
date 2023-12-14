@@ -1207,6 +1207,61 @@ s_no_extra_traits! {
     }
 }
 
+e! {
+    // linux/if_vlan.h
+    #[repr(i32)]
+    pub enum vlan_ioctl_cmds {
+        ADD_VLAN_CMD,
+        DEL_VLAN_CMD,
+        SET_VLAN_INGRESS_PRIORITY_CMD,
+        SET_VLAN_EGRESS_PRIORITY_CMD,
+        GET_VLAN_INGRESS_PRIORITY_CMD,
+        GET_VLAN_EGRESS_PRIORITY_CMD,
+        SET_VLAN_NAME_TYPE_CMD,
+        SET_VLAN_FLAG_CMD,
+        GET_VLAN_REALDEV_NAME_CMD,
+        GET_VLAN_VID_CMD,
+    }
+
+    pub enum vlan_flags {
+        VLAN_FLAG_REORDER_HDR = 0x1,
+        VLAN_FLAG_GVRP = 0x2,
+        VLAN_FLAG_LOOSE_BINDING = 0x4,
+        VLAN_FLAG_MVRP = 0x8,
+        VLAN_FLAG_BRIDGE_BINDING = 0x10,
+    }
+
+    #[repr(u32)]
+    pub enum vlan_name_types {
+        VLAN_NAME_TYPE_PLUS_VID,
+        VLAN_NAME_TYPE_RAW_PLUS_VID,
+        VLAN_NAME_TYPE_PLUS_VID_NO_PAD,
+        VLAN_NAME_TYPE_RAW_PLUS_VID_NO_PAD,
+        VLAN_NAME_TYPE_HIGHEST,
+    }
+}
+
+s_no_extra_traits! {
+    // linux/if_vlan.h
+    #[cfg(libc_union)]
+    pub union __c_anonymous_vlan_ioctl_args_u {
+        pub device_2: [::c_char; 24],
+        pub VID: ::c_int,
+        pub skb_priority: ::c_uint,
+        pub name_type: ::c_uint,
+        pub bind_type: ::c_uint,
+        pub flag: ::c_uint,
+    }
+
+    #[cfg(libc_union)]
+    pub struct vlan_ioctl_args {
+        pub cmd: ::c_int,
+        pub device1: [::c_char; 24],
+        pub u: __c_anonymous_vlan_ioctl_args_u,
+        pub vlan_qos: ::c_short,
+    }
+}
+
 s_no_extra_traits! {
     // linux/can.h
     #[allow(missing_debug_implementations)]

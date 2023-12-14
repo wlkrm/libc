@@ -3402,6 +3402,7 @@ fn test_linux(target: &str) {
         "linux/if_packet.h",
         "linux/if_tun.h",
         "linux/if_xdp.h",
+        "linux/if_vlan.h",
         "linux/input.h",
         "linux/ipv6.h",
         "linux/kexec.h",
@@ -4263,7 +4264,9 @@ fn test_linux(target: &str) {
         // `__exit_status` type is a patch which is absent in musl
         (struct_ == "utmpx" && field == "ut_exit" && musl) ||
         // `can_addr` is an anonymous union
-        (struct_ == "sockaddr_can" && field == "can_addr")
+        (struct_ == "sockaddr_can" && field == "can_addr") ||
+        // `u` is an anonymous union
+        (struct_ == "vlan_ioctl_args" && field == "u")
     });
 
     cfg.volatile_item(|i| {
