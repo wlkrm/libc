@@ -1243,7 +1243,6 @@ e! {
 
 s_no_extra_traits! {
     // linux/if_vlan.h
-    #[cfg(libc_union)]
     pub union __c_anonymous_vlan_ioctl_args_u {
         pub device_2: [::c_char; 24],
         pub VID: ::c_int,
@@ -1253,7 +1252,6 @@ s_no_extra_traits! {
         pub flag: ::c_uint,
     }
 
-    #[cfg(libc_union)]
     pub struct vlan_ioctl_args {
         pub cmd: ::c_int,
         pub device1: [::c_char; 24],
